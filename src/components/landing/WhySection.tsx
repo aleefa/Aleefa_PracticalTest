@@ -62,7 +62,7 @@ export function WhySection() {
             whileHover={{ y: -4 }}
             className="relative rounded-3xl bg-white p-6 shadow-sm ring-1 ring-black/[0.04] sm:p-8"
           >
-            <span className="absolute right-5 top-5 rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600">
+            <span className="absolute right-0 top-0 rounded-bl-2xl rounded-tr-3xl bg-[#dddddd] px-5 py-2 text-sm font-medium text-[#6b7280] shadow-sm">
               Traditional Cabs
             </span>
             <ul className="mt-10 space-y-6">
@@ -88,7 +88,7 @@ export function WhySection() {
             whileHover={{ y: -4 }}
             className="relative rounded-3xl bg-white p-6 shadow-sm ring-1 ring-[#FF4D2D]/15 sm:p-8"
           >
-            <span className="absolute right-5 top-5 rounded-full bg-[#FF4D2D] px-3 py-1 text-xs font-semibold text-white">
+            <span className="absolute right-0 top-0 rounded-bl-2xl rounded-tr-3xl bg-[#FF4D2D] px-5 py-2 text-sm font-medium text-white shadow-sm">
               AAVORide Experience
             </span>
             <ul className="mt-10 space-y-6">

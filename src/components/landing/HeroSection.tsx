@@ -24,6 +24,13 @@ const vehicles = [
 
 const HERO_IMG =
   "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=2400&q=80";
+const sedanThumb =
+  "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=240&q=80";
+const travelerAvatars = [
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
+];
 
 function FormFieldFrame({
   title,
@@ -84,29 +91,33 @@ export function HeroSection() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#services"
-              className="inline-flex items-center justify-center rounded-xl bg-[#FF4D2D] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:scale-[1.02] hover:bg-[#e63e22]"
+              className="inline-flex items-center justify-center rounded-full bg-[#FF4D2D] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:scale-[1.02] hover:bg-[#e63e22]"
             >
               Start Your Journey
             </a>
             <a
               href="#app"
-              className="inline-flex items-center justify-center rounded-xl border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15"
+              className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15"
             >
               Download App
             </a>
           </div>
           <div className="mt-10 flex items-center gap-3">
             <div className="flex -space-x-2">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="size-9 rounded-full border-2 border-white/80 bg-gradient-to-br from-orange-200 to-orange-400"
+              {travelerAvatars.map((avatar, i) => (
+                <Image
+                  key={avatar}
+                  src={avatar}
+                  alt="Happy traveler"
+                  width={36}
+                  height={36}
+                  className="size-9 rounded-full border-2 border-white/80 object-cover"
                   style={{ zIndex: 4 - i }}
                 />
               ))}
             </div>
             <p className="text-sm font-medium text-white/90">
-              4.9/5 Rating from 50k+ Happy Travelers
+              <span className="text-[#FFD45A]">4.9/5 Rating</span> from 50k+ Happy Travelers
             </p>
           </div>
         </motion.div>
@@ -225,13 +236,30 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="mt-4 rounded-xl bg-gradient-to-r from-[#FFF5F2] to-white px-3 py-3 ring-1 ring-[#FF4D2D]/15">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-[#FF4D2D]">
-                Recommended for you
-              </p>
-              <div className="mt-1 flex items-center justify-between gap-2">
-                <span className="text-sm font-bold text-[#1a1a1a]">Premium Sedan</span>
-                <span className="text-sm font-bold text-[#FF4D2D]">₹12/km</span>
+            <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-[#8a8a8a]">
+              Recommended for you
+            </p>
+            <div className="mt-2 rounded-xl bg-gradient-to-r from-[#FFF5F2] to-white px-3 py-3 ring-1 ring-[#FF4D2D]/15">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2.5">
+                  <div className="rounded-full bg-gradient-to-br from-[#ffe0d7] via-[#ffd1c4] to-[#ffc4b4] p-0.5">
+                    <Image
+                      src={sedanThumb}
+                      alt="Premium sedan"
+                      width={36}
+                      height={36}
+                      className="size-9 rounded-full object-cover ring-1 ring-[#FF4D2D]/20"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-[#1a1a1a]">Premium Sedan</p>
+                    <p className="text-xs text-[#8a8a8a]">Honda City or similar</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm font-bold text-[#FF4D2D]">₹12/km</p>
+                  <p className="text-[10px] text-[#9ca3af]">Fastest Response</p>
+                </div>
               </div>
             </div>
 

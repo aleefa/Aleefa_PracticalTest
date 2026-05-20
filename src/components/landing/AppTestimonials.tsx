@@ -13,7 +13,7 @@ import Image from "next/image";
 const testimonials = [
   {
     quote:
-      "Monthly Bangalore–Chennai runs are effortless now. Drivers are courteous, punctual, and the cars feel brand new every time.",
+      "AAVORide has transformed my monthly Bangalore-Chennai trips. The cars are spotless, and the drivers are incredibly professional. Best outstation experience in India!",
     name: "Ananya Sharma",
     role: "Frequent Traveler",
     avatar:
@@ -21,7 +21,7 @@ const testimonials = [
   },
   {
     quote:
-      "Our family trip to Ooty was perfect — roomy Innova Crysta, spotless interiors, and a driver who genuinely cared about safety on the ghats.",
+      "Booking was seamless. I used them for a family trip to Ooty. The Innova was well-maintained and the driver knew the terrain perfectly. Highly recommended for families.",
     name: "Vikram Malhotra",
     role: "Tech Executive",
     avatar:
@@ -29,11 +29,11 @@ const testimonials = [
   },
   {
     quote:
-      "Finally, transparent pricing without last-minute toll debates. What I booked is exactly what I paid — huge relief.",
+      "Transparent pricing is the best part. I knew exactly what I was paying before the trip started. No haggling with the driver for tolls. Truly premium.",
     name: "Priya Das",
     role: "Digital Nomad",
     avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80",
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
   },
 ];
 
