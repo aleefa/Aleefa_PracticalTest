@@ -25,6 +25,25 @@ const vehicles = [
 const HERO_IMG =
   "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=2400&q=80";
 
+function FormFieldFrame({
+  title,
+  children,
+  className = "",
+}: {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`relative rounded-[0.95rem] border border-[#f5c5ba] bg-[#f8f8f8] ${className}`}>
+      <span className="absolute -top-2 left-3 bg-white px-1.5 text-[11px] font-medium text-[#7b7b7b]">
+        {title}
+      </span>
+      <div className="flex min-h-[2.75rem] items-center px-3">{children}</div>
+    </div>
+  );
+}
+
 export function HeroSection() {
   const [trip, setTrip] = useState<"oneway" | "round">("oneway");
   const [vehicle, setVehicle] = useState<string>("sedan");
@@ -43,7 +62,7 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/25" />
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-8 lg:py-16">
+      <div className="relative mx-auto grid max-w-7xl gap-10 overflow-x-clip px-4 py-12 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-8 lg:py-16">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,12 +115,12 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
+          className="relative mx-auto w-full max-w-[33rem]"
         >
-          <div className="absolute -right-3 -top-3 z-10 flex size-12 items-center justify-center rounded-xl bg-[#FF4D2D] shadow-lg shadow-[#FF4D2D]/40">
+          <div className="absolute right-2 top-2 z-10 flex size-12 items-center justify-center rounded-xl bg-[#FF4D2D] shadow-lg shadow-[#FF4D2D]/40 sm:-right-3 sm:-top-3">
             <Car className="size-6 text-white" aria-hidden />
           </div>
-          <div className="rounded-[1.75rem] bg-white p-5 shadow-2xl shadow-black/25 ring-1 ring-black/5 sm:p-6">
+          <div className="w-full rounded-[1.75rem] bg-white p-4 shadow-2xl shadow-black/25 ring-1 ring-black/5 sm:p-6">
             <h2 className="text-lg font-bold text-[#1a1a1a]">Plan Your Trip</h2>
             <div className="mt-4 flex gap-6 border-b border-gray-100 text-sm font-semibold">
               <button
@@ -137,52 +156,64 @@ export function HeroSection() {
             </div>
 
             <div className="mt-5 space-y-3">
-              <label className="flex items-center gap-2 rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2.5">
+              <FormFieldFrame title="Pickup Location">
                 <MapPin className="size-4 shrink-0 text-[#FF4D2D]" />
                 <input
-                  className="w-full bg-transparent text-sm outline-none placeholder:text-gray-400"
-                  placeholder="Pickup location"
+                  className="ml-2 w-full bg-transparent text-sm text-[#374151] outline-none placeholder:text-gray-500"
+                  placeholder="Enter City or Airport"
                 />
-              </label>
-              <label className="flex items-center gap-2 rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2.5">
-                <MapPin className="size-4 shrink-0 text-gray-400" />
+              </FormFieldFrame>
+              <FormFieldFrame title="Destination">
+                <MapPin className="size-4 shrink-0 text-gray-500" />
                 <input
-                  className="w-full bg-transparent text-sm outline-none placeholder:text-gray-400"
-                  placeholder="Destination"
+                  className="ml-2 w-full bg-transparent text-sm text-[#374151] outline-none placeholder:text-gray-500"
+                  placeholder="Where are you heading?"
                 />
-              </label>
+              </FormFieldFrame>
               <div className="grid grid-cols-2 gap-3">
-                <label className="flex items-center gap-2 rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2.5">
+                <FormFieldFrame title="Date">
                   <Calendar className="size-4 shrink-0 text-gray-500" />
-                  <input type="date" className="w-full bg-transparent text-sm outline-none" />
-                </label>
-                <label className="flex items-center gap-2 rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2.5">
+                  <input
+                    type="text"
+                    value="24 Oct 2024"
+                    readOnly
+                    className="ml-2 w-full bg-transparent text-sm text-[#374151] outline-none"
+                  />
+                </FormFieldFrame>
+                <FormFieldFrame title="Time">
                   <Clock className="size-4 shrink-0 text-gray-500" />
-                  <input type="time" className="w-full bg-transparent text-sm outline-none" />
-                </label>
+                  <input
+                    type="text"
+                    value="09:00 AM"
+                    readOnly
+                    className="ml-2 w-full bg-transparent text-sm text-[#374151] outline-none"
+                  />
+                </FormFieldFrame>
               </div>
-              <button
-                type="button"
-                className="flex w-full items-center justify-between rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2.5 text-left text-sm text-[#1a1a1a]"
-              >
-                <span className="flex items-center gap-2">
-                  <Users className="size-4 text-gray-500" />
-                  1 Passenger
-                </span>
-                <ChevronDown className="size-4 text-gray-400" />
-              </button>
+              <FormFieldFrame title="Travellers">
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between text-left text-sm text-[#1a1a1a]"
+                >
+                  <span className="flex items-center gap-2">
+                    <Users className="size-4 text-gray-500" />
+                    1 Passenger
+                  </span>
+                  <ChevronDown className="size-4 text-gray-400" />
+                </button>
+              </FormFieldFrame>
             </div>
 
             <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-gray-400">
               Choose vehicle
             </p>
-            <div className="mt-2 flex gap-2 overflow-x-auto pb-1 scrollbar-thin">
+            <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
               {vehicles.map((v) => (
                 <button
                   key={v.id}
                   type="button"
                   onClick={() => setVehicle(v.id)}
-                  className={`flex min-w-[4.5rem] flex-col items-center gap-1 rounded-xl border px-2 py-2 text-[10px] font-medium transition sm:text-xs ${
+                  className={`flex min-w-[4.65rem] flex-col items-center gap-1 rounded-xl border px-2 py-2 text-[10px] font-medium transition sm:text-xs ${
                     vehicle === v.id
                       ? "border-[#FF4D2D] bg-[#FFF5F2] text-[#FF4D2D]"
                       : "border-gray-100 bg-white text-gray-600 hover:border-[#FF4D2D]/40"
